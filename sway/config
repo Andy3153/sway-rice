@@ -1,0 +1,257 @@
+## vim: set fenc=utf-8 ts=4 sw=0 sts=0 sr et si tw=0 fdm=marker fmr={{{,}}}:
+##
+## Sway/I3 config by Andy3153
+## created   11/08/22 ~ 17:25:31
+##
+## Programs needed:
+##  sway swaybg swayidle swaylock rofi-lbonn-wayland foot sov
+##
+
+# {{{ Variables
+set
+{
+    # Modkey
+    $Mod Mod4
+
+    # Vim keys
+    $left h
+    $down j
+    $up k
+    $right l
+
+    # Gap size
+    $gap 10
+
+    # Terminal command
+    $term footclient
+
+    # Appmenu command
+    $menu rofi -show drun
+}
+# }}}
+
+# {{{ Autostart
+exec
+{
+    # Idle configuration
+    swayidle -w \
+        timeout 600 'swaylock -f -c 000000' \
+        timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+        before-sleep 'swaylock -f -c 000000'
+
+    # Foot terminal server
+    foot --server
+
+    # Sov (workspace overlay)
+    rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov
+}
+# }}}
+
+# {{{ Output configuration
+output *
+{
+    # Wallpaper
+    bg ~/.config/sway/wallpaper fill
+}
+# }}}
+
+# {{{ Keybinds
+# Key to drag windows
+floating_modifier $Mod normal
+
+# {{{ Power menu
+mode "power menu [ l(ock) | s(uspend) | L(ogout) | r(eboot) | p(oweroff) ]"
+{
+    bindsym
+    {
+        l       mode "default" ; exec swaylock -f -c 000000
+        Shift+l exec swaynag -t warning -m 'log out?'     -B 'yes, log out'     'swaymsg exit'
+        p       exec swaynag -t warning -m 'poweroff?'    -B 'yes, poweroff'     'systemctl poweroff'
+        r       exec swaynag -t warning -m 'reboot?'      -B 'yes, reboot'       'systemctl reboot'
+        s       exec swaynag -t warning -m 'suspend?'     -B 'yes, suspend'      'systemctl suspend'
+
+        # Get back to default mode
+        Escape mode "default"
+        Return mode "default"
+        Ctrl+Shift+$Mod+p mode "default"
+    }
+}
+
+# Get to power menu mode
+bindsym Ctrl+Shift+$Mod+p mode "power menu [ l(ock) | s(uspend) | L(ogout) | r(eboot) | p(oweroff) ]"
+# }}}
+
+bindsym
+{
+    # {{{ Apps
+    # Appmenu
+    $Mod+Space exec $menu
+
+    # Terminal
+    $Mod+Return exec $term
+    # }}}
+
+    # {{{ Windows
+    # Moving focus
+    $Mod+$left focus left
+    $Mod+$down focus down
+    $Mod+$up focus up
+    $Mod+$right focus right
+
+    # Moving focused window
+    $Mod+Shift+$left move left
+    $Mod+Shift+$down move down
+    $Mod+Shift+$up move up
+    $Mod+Shift+$right move right
+
+    # Resizing focused window
+    Ctrl+$Mod+$left resize shrink width 10px
+    Ctrl+$Mod+$down resize grow height 10px
+    Ctrl+$Mod+$up resize shrink height 10px
+    Ctrl+$Mod+$right resize grow width 10px
+    # }}}
+
+    # {{{ Workspaces
+    # Switch to workspace
+    --no-repeat $Mod+1 workspace number 1; exec "echo 1 > /tmp/sovpipe"
+    --no-repeat $Mod+2 workspace number 2; exec "echo 1 > /tmp/sovpipe"
+    --no-repeat $Mod+3 workspace number 3; exec "echo 1 > /tmp/sovpipe"
+    --no-repeat $Mod+4 workspace number 4; exec "echo 1 > /tmp/sovpipe"
+    --no-repeat $Mod+5 workspace number 5; exec "echo 1 > /tmp/sovpipe"
+    --no-repeat $Mod+6 workspace number 6; exec "echo 1 > /tmp/sovpipe"
+    --no-repeat $Mod+7 workspace number 7; exec "echo 1 > /tmp/sovpipe"
+    --no-repeat $Mod+8 workspace number 8; exec "echo 1 > /tmp/sovpipe"
+    --no-repeat $Mod+9 workspace number 9; exec "echo 1 > /tmp/sovpipe"
+    --no-repeat $Mod+0 workspace number 10; exec "echo 1 > /tmp/sovpipe"
+
+    --release $Mod+1 exec "echo 0 > /tmp/sovpipe"
+    --release $Mod+2 exec "echo 0 > /tmp/sovpipe"
+    --release $Mod+3 exec "echo 0 > /tmp/sovpipe"
+    --release $Mod+4 exec "echo 0 > /tmp/sovpipe"
+    --release $Mod+5 exec "echo 0 > /tmp/sovpipe"
+    --release $Mod+6 exec "echo 0 > /tmp/sovpipe"
+    --release $Mod+7 exec "echo 0 > /tmp/sovpipe"
+    --release $Mod+8 exec "echo 0 > /tmp/sovpipe"
+    --release $Mod+9 exec "echo 0 > /tmp/sovpipe"
+    --release $Mod+0 exec "echo 0 > /tmp/sovpipe"
+
+    # Move focused window to workspace
+    $Mod+Shift+1 move container to workspace number 1
+    $Mod+Shift+2 move container to workspace number 2
+    $Mod+Shift+3 move container to workspace number 3
+    $Mod+Shift+4 move container to workspace number 4
+    $Mod+Shift+5 move container to workspace number 5
+    $Mod+Shift+6 move container to workspace number 6
+    $Mod+Shift+7 move container to workspace number 7
+    $Mod+Shift+8 move container to workspace number 8
+    $Mod+Shift+9 move container to workspace number 9
+    $Mod+Shift+0 move container to workspace number 10
+    # }}}
+
+    # {{{ Layout
+    # Make window fullscreen
+    $Mod+f fullscreen
+
+    # Whether next split will be vertical or orizontal
+    $Mod+b splith
+    $Mod+v splitv
+
+    # Switch window layouts
+    $Mod+s layout stacking
+    $Mod+w layout tabbed
+    $Mod+e layout toggle split
+
+    # Toggle window between tiling or floating mode
+    $Mod+Shift+Return floating toggle
+
+    # Swap focus to tiling or floating zone
+    $Mod+Alt+Return focus mode_toggle
+
+    # Move focus to parent window
+    $Mod+a focus parent
+    # }}}
+
+    # {{{ Scratchpad
+    # Move focused window to scratchpad
+    $Mod+Shift+minus move scratchpad
+
+    # Show next scratchpad window or hide focused scratchpad window.
+    $Mod+minus scratchpad show
+    # }}}
+
+    # {{{ Others
+    # Kill focused window
+    Ctrl+Shift+q kill
+    Alt+F4 kill
+
+    # Reload the configuration file
+    Ctrl+Shift+$Mod+c reload
+
+    # Lock screen
+    Ctrl+Alt+L exec swaylock -f -c 000000
+    $Mod+Escape exec swaylock -f -c 000000
+    # }}}
+}
+# }}}
+
+# {{{ Window borders
+default_border pixel 2
+# }}}
+
+# {{{ Status bar
+bar
+{
+    # Position, top|bottom
+    position top
+
+    # Bar visibility, dock|hide|invisible|overlay
+    mode dock
+
+    # Key that shows a hidden bar
+    modifier $Mod
+
+    # Font
+    font "Iosevka Nerd Font Mono Normal Regular 12px"
+
+    # Height, 0 matches font size
+    height 0
+
+    # Workspace buttons, yes|no
+    workspace_buttons yes
+
+    # Min width of buttons
+    workspace_min_width 22
+
+    # Status command, command executed with sh -c
+    status_command while date +"%a, %d %b | %H:%M:%S" ; do sleep 1 ; done
+
+    # Gaps, from edges of the screen in px
+    gaps $gap
+
+    # Omit workspace names, show custom number, yes|no
+    strip_workspace_name no
+
+    # Omit workspace numbers, show custom name, yes|no
+    strip_workspace_numbers no
+
+    colors
+    {
+        # Bar background
+        background #323232f3
+
+        # Statusline text
+        statusline #ffffff
+
+        # <border> <background> <text>
+        # Inactive workspace button
+        inactive_workspace #323232 #323232 #5c5c5c
+    }
+}
+# }}}
+
+# {{{ Eyecandy
+# Window gaps
+gaps inner $gap
+# }}}
+
+include /etc/sway/config.d/*
