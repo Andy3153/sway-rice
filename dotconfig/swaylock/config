@@ -7,7 +7,7 @@
 ignore-empty-password
 show-failed-attempts
 daemonize
-indicator-idle-visible
+#indicator-idle-visible
 show-keyboard-layout
 color=000000
 image=~/.local/share/wallpaper
