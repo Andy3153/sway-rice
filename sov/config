@@ -1,9 +1,15 @@
+## vim: set fenc=utf-8 ts=4 sw=0 sts=0 sr et si tw=0 fdm=marker fmr={{{,}}}:
+##
+## Sov config by Andy3153
+## created   26/08/22 ~ 03:08:12
+##
+
 # anchor, where to display sov, top, bottom, left, right, center
 anchor center
 
 # margin, distance from edges if anchor is set
 margin 0
-       
+
 # show timeout in millisecs
 timeout 200
 
@@ -17,7 +23,7 @@ columns 5
 ratio 8
 
 # font face, use any string that is output by fc-list, recommended is Terminus (TTF):style=Bold
-font_face Terminus (TTF):style=Bold
+font_face Iosevka Term (TTF):style=Bold
 
 # margin size around text
 text_margin_size 7
