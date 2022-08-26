@@ -1,8 +1,7 @@
 ## vim: set fenc=utf-8 ts=4 sw=0 sts=0 sr et si tw=0 fdm=marker fmr={{{,}}}:
 ##
-## Sway/I3 config by Andy3153
+## Sway config by Andy3153
 ## created   11/08/22 ~ 17:25:31
-##
 ##
 
 # {{{ Variables
@@ -20,11 +19,17 @@ set
     # Gap size
     $gap 10
 
+    # Font
+    $font pango:Iosevka Term Normal Regular 12px
+
+    # Icon theme
+    $icontheme Papirus
+
     # Terminal command
     $term footclient
 
     # Appmenu command
-    $menu rofi -show drun
+    $menu rofi -show combi
 }
 # }}}
 
@@ -33,9 +38,9 @@ exec
 {
     # Idle configuration
     swayidle -w \
-        timeout 600 'swaylock -f -c 000000' \
+        timeout 600 'swaylock' \
         timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-        before-sleep 'swaylock -f -c 000000'
+        before-sleep 'swaylock'
 
     # Foot terminal server
     foot --server
@@ -53,6 +58,15 @@ output *
 }
 # }}}
 
+# {{{ Input configuration
+input *
+{
+    # Keyboard repeat delay/rate
+    repeat_delay 300
+    repeat_rate 25
+}
+# }}}
+
 # {{{ Keybinds
 # Key to drag windows
 floating_modifier $Mod normal
@@ -62,7 +76,7 @@ mode "power menu [ l(ock) | s(uspend) | L(ogout) | r(eboot) | p(oweroff) ]"
 {
     bindsym
     {
-        l       mode "default" ; exec swaylock -f -c 000000
+        l       mode "default" ; exec swaylock
         Shift+l exec swaynag -t warning -m 'log out?'     -B 'yes, log out'     'swaymsg exit'
         p       exec swaynag -t warning -m 'poweroff?'    -B 'yes, poweroff'     'systemctl poweroff'
         r       exec swaynag -t warning -m 'reboot?'      -B 'yes, reboot'       'systemctl reboot'
@@ -186,8 +200,8 @@ bindsym
     Ctrl+Shift+$Mod+c reload
 
     # Lock screen
-    Ctrl+Alt+L exec swaylock -f -c 000000
-    $Mod+Escape exec swaylock -f -c 000000
+    Ctrl+Alt+L exec swaylock
+    $Mod+Escape exec swaylock
     # }}}
 }
 # }}}
@@ -199,6 +213,12 @@ default_border pixel 2
 # {{{ Status bar
 bar
 {
+    # Bar Sway should use, default: swaybar
+    swaybar_command swaybar
+
+    # ID
+    id 0
+
     # Position, top|bottom
     position top
 
@@ -209,7 +229,7 @@ bar
     modifier $Mod
 
     # Font
-    font "Iosevka Nerd Font Mono Normal Regular 12px"
+    font $font
 
     # Height, 0 matches font size
     height 0
@@ -232,6 +252,14 @@ bar
     # Omit workspace numbers, show custom name, yes|no
     strip_workspace_numbers no
 
+    # Separator symbol
+    separator_symbol |
+
+    tray
+    {
+        icon_theme $icontheme
+    }
+
     colors
     {
         # Bar background
@@ -240,6 +268,9 @@ bar
         # Statusline text
         statusline #ffffff
 
+        # Separator symbol text color
+        separator #ffffff
+
         # <border> <background> <text>
         # Inactive workspace button
         inactive_workspace #323232 #323232 #5c5c5c
@@ -247,9 +278,12 @@ bar
 }
 # }}}
 
-# {{{ Eyecandy
+# {{{ Sway customization
 # Window gaps
 gaps inner $gap
+
+# Font
+font $font
 # }}}
 
 include /etc/sway/config.d/*
