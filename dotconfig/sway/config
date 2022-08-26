@@ -25,6 +25,9 @@ set
     # Icon theme
     $icontheme Papirus
 
+    # Screenshot path
+    $screenshotpath $(xdg-user-dir PICTURES)ss/$(date +'Screenshot_%Y%m%d_%H%M%S.png')
+
     # Terminal command
     $term footclient
 
@@ -101,6 +104,19 @@ bindsym
 
     # Terminal
     $Mod+Return exec $term
+
+    # Screenshots (Grim)
+    # All screens
+    Print exec grim  $screenshotpath
+
+    # All screens to clipboard
+    Mod4+Print exec grim - | wl-copy
+
+    # Rectangular region
+    Shift+Print exec grim -g "$(slurp)" $screenshotpath
+
+    # Active window
+    Ctrl+Print exec grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" $screenshotpath
     # }}}
 
     # {{{ Windows
