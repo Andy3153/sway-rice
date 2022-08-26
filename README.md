@@ -10,8 +10,11 @@ This Git repo contains folders from a `~/.config/` folder. So, you can go two wa
 cd /path/to/clone/folder/
 git clone https://github.com/Andy3153/sway-rice/
 ln -s /path/to/clone/folder/sway-rice/foot ~/.config/
+ln -s /path/to/clone/folder/sway-rice/rofi ~/.config/
 ln -s /path/to/clone/folder/sway-rice/sov ~/.config/
 ln -s /path/to/clone/folder/sway-rice/sway ~/.config/
+ln -s /path/to/clone/folder/sway-rice/swaylock ~/.config/
+ln -s /path/to/clone/folder/sway-rice/swaynag ~/.config/
 ```
 
 ### Copying (feel free to delete the folder)
@@ -20,8 +23,11 @@ cd /path/to/clone/folder/
 git clone https://github.com/Andy3153/sway-rice/
 cd sway-rice/
 cp -r foot ~/.config/
+cp -r rofi ~/.config/
 cp -r sov ~/.config/
 cp -r sway ~/.config/
+cp -r swaylock ~/.config/
+cp -r swaynag ~/.config/
 cd ..
 rm -rf sway-rice/
 ```
@@ -29,7 +35,7 @@ rm -rf sway-rice/
 Replace `/path/to/clone/folder/` with the folder you want to clone the Git repo inside. Your choice, could be your Home directory.
 
 ## Dependencies (in Arch Linux package names)
-`sway swaybg swayidle swaylock rofi-lbonn-wayland foot sov`
+`sway swaybg swayidle swaylock rofi-lbonn-wayland foot sov ttf-iosevka-nerd ttf-nerd-fonts-symbols `
 
 ## Other dotfiles of mine
 - [Zsh config](https://github.com/Andy3153/andy3153-zshrc)
