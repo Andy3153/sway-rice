@@ -10,7 +10,7 @@ daemonize
 indicator-idle-visible
 show-keyboard-layout
 color=000000
-image=~/.config/sway/wallpaper
+image=~/.local/share/wallpaper
 font=Iosevka Term
 font-size=12
 scaling=fill
