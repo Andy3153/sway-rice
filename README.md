@@ -27,7 +27,7 @@ rm -rf sway-rice/
 ```
 
 ## Dependencies (in Arch Linux package names)
-`sway swaybg swayidle swaylock rofi-lbonn-wayland foot sov ttf-iosevka-nerd ttf-nerd-fonts-symbols `
+`sway swaybg swayidle swaylock rofi-lbonn-wayland foot sov grim slurp xdg-user-dirs jq wl-clipboard ttf-iosevka-nerd ttf-nerd-fonts-symbols`
 
 ## Other dotfiles of mine
 - [Zsh config](https://github.com/Andy3153/andy3153-zshrc)
