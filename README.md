@@ -2,6 +2,9 @@
 # sway-rice
 These are the configuration files for all of the programs I am going to use inside Sway, a Wayland compositor.
 
+## Dependencies (in Arch Linux package names)
+`sway swaybg swayidle swaylock rofi-lbonn-wayland foot sov grim slurp xdg-user-dirs jq wl-clipboard ttf-iosevka-nerd ttf-nerd-fonts-symbols`
+
 ## Installation
 This Git repo contains `dotconfig` and `dotlocal`. These correspond to `~/.config` and `~/.local` respectively. So, you can go two ways about 'installing' these.
 
@@ -25,9 +28,6 @@ cp -r dotlocal/* ~/.local
 cd ..
 rm -rf sway-rice/
 ```
-
-## Dependencies (in Arch Linux package names)
-`sway swaybg swayidle swaylock rofi-lbonn-wayland foot sov grim slurp xdg-user-dirs jq wl-clipboard ttf-iosevka-nerd ttf-nerd-fonts-symbols`
 
 ## Other dotfiles of mine
 - [Zsh config](https://github.com/Andy3153/andy3153-zshrc)
