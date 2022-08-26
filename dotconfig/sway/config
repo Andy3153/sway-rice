@@ -54,7 +54,7 @@ exec
 output *
 {
     # Wallpaper
-    bg ~/.config/sway/wallpaper fill
+    bg ~/.local/share/wallpaper fill
 }
 # }}}
 
