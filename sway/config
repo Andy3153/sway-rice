@@ -3,8 +3,6 @@
 ## Sway/I3 config by Andy3153
 ## created   11/08/22 ~ 17:25:31
 ##
-## Programs needed:
-##  sway swaybg swayidle swaylock rofi-lbonn-wayland foot sov
 ##
 
 # {{{ Variables
