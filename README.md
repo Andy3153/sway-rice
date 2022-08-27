@@ -40,6 +40,7 @@ This folder contains some other stuff I use. See the [README](etc/) inside that 
 ## TODO
 - [ ] control volume
 - [ ] control brightness
+- [ ] swaybar
 - [ ] notifications
 - [ ] notification popups for some shortcuts
 - [ ] separate parts of sway config in files?
