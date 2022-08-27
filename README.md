@@ -8,25 +8,29 @@ These are the configuration files for all of the programs I am going to use insi
 ## Installation
 This Git repo contains `dotconfig` and `dotlocal`. These correspond to `~/.config` and `~/.local` respectively. So, you can go two ways about 'installing' these.
 
-Replace `/path/to/clone/folder/` with the folder you want to clone the Git repo inside. Your choice, could be your Home directory.
-
-### Symlinks (you need to keep the cloned folder)
+Firstly, clone the repo:
 ```bash
 cd /path/to/clone/folder/
 git clone https://github.com/Andy3153/sway-rice/
+```
+
+(replace `/path/to/clone/folder/` with the folder you want to clone the Git repo inside. Your choice, could be your Home directory)
+
+Then, follow either of these methods:
+
+- Symlinks (you need to keep the cloned folder)
+```bash
 ln -s /path/to/clone/folder/sway-rice/dotconfig/* ~/.config
 ln -s /path/to/clone/folder/sway-rice/dotlocal/* ~/.local
 ```
 
-### Copying (feel free to delete the folder)
+- Copying
 ```bash
-cd /path/to/clone/folder/
-git clone https://github.com/Andy3153/sway-rice/
 cd sway-rice/
 cp -r dotconfig/* ~/.config
 cp -r dotlocal/* ~/.local
 cd ..
-rm -rf sway-rice/
+rm -rf sway-rice/ # feel free to delete the folder
 ```
 
 ## The `etc` folder
