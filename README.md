@@ -29,6 +29,10 @@ cd ..
 rm -rf sway-rice/
 ```
 
+## The `etc` folder
+
+This folder contains some other stuff I use. See the [README](etc/) inside that folder for more info.
+
 ## TODO
 - [ ] control volume
 - [ ] control brightness
