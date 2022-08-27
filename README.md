@@ -29,6 +29,14 @@ cd ..
 rm -rf sway-rice/
 ```
 
+## TODO
+- [ ] control volume
+- [ ] control brightness
+- [ ] notifications
+- [ ] notification popups for some shortcuts
+- [ ] separate parts of sway config in files?
+- [ ] pywal?
+
 ## Other dotfiles of mine
 - [Zsh config](https://github.com/Andy3153/andy3153-zshrc)
 - [Neovim config](https://github.com/Andy3153/andy3153-init.lua)
