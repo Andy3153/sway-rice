@@ -1,0 +1,77 @@
+## vim: set fenc=utf-8 ts=4 sw=0 sts=0 sr et si tw=0 fdm=marker fmr={{{,}}}:
+##
+## Yambar config by Andy3153
+## created   27/08/22 ~ 16:34:23
+##
+
+# {{{ Fonts
+font: &font "Iosevka Term:pixelsize=12"
+font-icon: &font-icon "Font Awesome 5 Free:style=solid:pixelsize=14"
+# }}}
+
+bar:
+  # {{{ Basic properties
+  height: 24
+  location: top
+  background: 00000066
+  foreground: ffffffff
+  font: *font
+  margin: 10
+  # }}}
+
+  # {{{ Border, blank to create gaps
+  border:
+    color: 00000000
+    top-margin: 10
+    left-margin: 10
+    right-margin: 10
+  # }}}
+
+  # {{{ Bar elements
+  # {{{ Left elements
+  left:
+    - i3:
+        content:
+          "":
+            map:
+              default: {string: {text: "{name}"}}
+              conditions:
+                state == focused: {string: {text: "{name}*"}}
+                  #current: {string: {text: "{application}: {title}"}}
+  # }}}
+
+  # {{{ Center elements
+  center:
+    - clock:
+        time-format: "%H:%M:%S"
+        date-format: "%a, %d %b"
+        content:
+          - string: {text: "{date} | {time}"}
+  # }}}
+
+  # {{{ Right elements
+  right:
+    # {{{ Brightness
+    - backlight:
+        name: acpi_video0
+        content:
+          - string:
+              #deco: {background: {color: 008080ff}}
+              font: *font-icon
+              text: 
+              margin: 0
+          - string:
+              #deco: {background: {color: 008080ff}}
+              text: "{percent}%"
+              margin: 0
+    # }}}
+
+    # {{{ Battery percentage
+    #- battery:
+    #    name: BAT0
+    #    content:
+    #      - string:
+    #          text: " {capacity}%"
+    # }}}
+  # }}}
+  # }}}

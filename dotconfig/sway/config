@@ -50,6 +50,9 @@ exec
 
     # Sov (workspace overlay)
     rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov
+
+    # Yambar
+    #yambar
 }
 # }}}
 
@@ -230,7 +233,7 @@ default_border pixel 2
 bar
 {
     # Bar Sway should use, default: swaybar
-    swaybar_command swaybar
+    #swaybar_command echo sdf
 
     # ID
     id 0

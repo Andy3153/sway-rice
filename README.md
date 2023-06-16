@@ -3,7 +3,7 @@
 These are the configuration files for all of the programs I am going to use inside Sway, a Wayland compositor.
 
 ## Dependencies (in Arch Linux package names)
-`sway swaybg swayidle swaylock rofi-lbonn-wayland foot sov grim slurp xdg-user-dirs jq wl-clipboard ttf-iosevka-nerd ttf-nerd-fonts-symbols`
+`sway swaybg swayidle swaylock yambar rofi-lbonn-wayland foot sov grim slurp xdg-user-dirs jq wl-clipboard ttf-iosevka-nerd ttf-font-awesome ttf-nerd-fonts-symbols`
 
 ## Installation
 This Git repo contains `dotconfig` and `dotlocal`. These correspond to `~/.config` and `~/.local` respectively. So, you can go two ways about 'installing' these.
