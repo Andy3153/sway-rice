@@ -49,6 +49,7 @@ This folder contains some other stuff I use. See the [README](etc/) inside that 
 ## Other dotfiles of mine
 - [Zsh config](https://github.com/Andy3153/andy3153-zshrc)
 - [Neovim config](https://github.com/Andy3153/andy3153-init.lua)
+- [Hyprland rice](https://github.com/Andy3153/hyprland-rice)
 
 ## Contributing
 Feel free to give me advice on this, or even help me with it!
